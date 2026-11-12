@@ -1,4 +1,4 @@
-"""Isarwerk | Four-minute CFO value demo for BLP Digital.
+"""Isarwerk | Before-and-after CFO value demo for BLP Digital.
 
 Replace app.py in the EXISTING GitHub repo; retain the original value_model.py.
 Numbers are transparent illustrative estimates, not a BLP quote or customer forecast.
@@ -68,6 +68,47 @@ a{color:#088d7b;}
 .input-heading{font-family:Manrope,sans-serif;font-size:17px;letter-spacing:-.45px;font-weight:850;color:#173044;margin-bottom:1px;}
 .input-desc{font-size:11px;color:#8391a0;line-height:1.48;margin-bottom:4px;}
 .small-info{color:#8896a2;font-size:10.5px;line-height:1.5;}
+
+/* THE CFO TRANSFORMATION: always-visible, live BEFORE versus AFTER. */
+.compare-flow{display:grid;grid-template-columns:minmax(0,1fr) 96px minmax(0,1fr);gap:10px;align-items:stretch;}
+.compare-panel{background:#fff;border:1px solid #dfe8ed;border-radius:16px;padding:15px 18px 13px;min-width:0;box-shadow:0 4px 12px #102f4010;}
+.compare-panel.after{background:linear-gradient(130deg,#ecfcf5 0%,#f9fffc 90%);border-color:#a7decf;}
+.compare-tag{display:inline-block;font-size:10px;font-weight:850;letter-spacing:1.2px;color:#6a7e88;}
+.compare-panel.after .compare-tag{color:#06846f;}
+.compare-big{font-family:Manrope,sans-serif;font-size:clamp(27px,3vw,41px);letter-spacing:-1.8px;font-weight:850;line-height:1.15;color:#17364b;margin:7px 0 1px;}
+.compare-panel.after .compare-big{color:#078773;}
+.compare-big small{font-size:12px;letter-spacing:0;font-family:'DM Sans',sans-serif;color:#778b98;font-weight:700;}
+.compare-primary{font-size:10px;color:#8194a0;margin-bottom:10px;}
+.compare-row{display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid #e8eef1;padding:8px 0;color:#526c79;font-size:11px;line-height:1.35;}
+.compare-row b{font-family:Manrope,sans-serif;font-size:14px;font-weight:850;color:#234054;white-space:nowrap;}
+.compare-panel.after .compare-row b{color:#117f6e;}
+.compare-arrow{display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;min-width:0;gap:5px;}
+.compare-arrow .arrow-circle{width:39px;height:39px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:#d7f4e9;color:#0d937d;font-size:24px;font-weight:750;}
+.compare-arrow .arrow-pct{font-size:16px;font-weight:850;color:#0c8a75;font-family:Manrope,sans-serif;line-height:1.1;}
+.compare-arrow .arrow-copy{font-size:9px;line-height:1.45;color:#8496a0;font-weight:700;}
+.impact-strip{background:#f1f7f7;border:1px solid #d6e8e6;border-radius:12px;margin:9px 0 0;padding:9px 14px;display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;}
+.impact-strip strong{font-size:12px;color:#147763;}
+.impact-strip span{font-size:10.5px;color:#647e88;}
+.finance-compare{background:linear-gradient(120deg,#183247 0%,#18464e 100%);border-radius:16px;padding:17px 20px;margin-top:10px;color:#fff;}
+.fin-compare-grid{display:grid;grid-template-columns:1fr 75px 1fr;align-items:center;gap:12px;}
+.fin-compare-kicker{font-size:10px;font-weight:850;letter-spacing:1px;color:#a4c2c8;text-transform:uppercase;}
+.fin-compare-val{font-family:Manrope,sans-serif;font-size:clamp(23px,2.7vw,35px);font-weight:850;letter-spacing:-1.5px;line-height:1.25;color:#fff;margin-top:4px;}
+.fin-compare-after .fin-compare-val{color:#9effd7;}
+.fin-compare-sub{font-size:10px;color:#b8d1d3;line-height:1.45;margin-top:3px;}
+.fin-mid{font-family:Manrope,sans-serif;font-size:27px;font-weight:850;color:#9ee8d6;text-align:center;}
+.fin-bars{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0 4px;}
+.fin-bar-label{font-size:9px;color:#a6c7c7;font-weight:750;margin-bottom:4px;}
+.fin-bar-track{height:9px;border-radius:20px;background:#ffffff20;overflow:hidden;}
+.fin-bar-before{height:100%;background:#a9c0cb;border-radius:20px;transition:width .3s;}
+.fin-bar-after{height:100%;background:#6fe0ba;border-radius:20px;transition:width .3s;}
+.fin-revenue{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid #ffffff24;margin-top:12px;padding-top:10px;}
+.fin-revenue span{font-size:10px;color:#c2d7d7;line-height:1.5;}
+.fin-revenue b{color:#c4ffde;font-weight:850;}
+.fin-gain{display:inline-block;background:#c4fce9;color:#0a6655;border-radius:8px;padding:6px 9px;font-size:11px;font-weight:850;white-space:nowrap;}
+.fin-gain.negative{color:#9a431b;background:#ffe6d1;}
+@media(max-width:850px){.compare-flow{grid-template-columns:1fr 65px 1fr;gap:6px}.compare-panel{padding:12px}.compare-arrow .arrow-pct{font-size:13px}.fin-compare-grid{grid-template-columns:1fr 45px 1fr;gap:5px}.finance-compare{padding:13px}}
+@media(max-width:600px){.compare-flow{grid-template-columns:1fr;}.compare-arrow{flex-direction:row;}.compare-arrow .arrow-copy{max-width:125px}.compare-arrow .arrow-circle{transform:rotate(90deg);height:30px;width:30px;font-size:18px}.fin-compare-val{font-size:21px}.fin-compare-grid{grid-template-columns:1fr 24px 1fr}.fin-mid{font-size:18px}.fin-compare-sub{font-size:9px}}
+
 /* Main highlight */
 .result-hero{position:relative;background:linear-gradient(115deg,#142e43 0%,#163e48 70%,#126b5d 135%);border-radius:19px;color:white;padding:23px 26px 21px;min-height:215px;overflow:hidden;box-shadow:0 12px 25px #142f4320;}
 .result-hero:after{content:'';position:absolute;width:245px;height:245px;border:1px solid #ffffff22;border-radius:50%;right:-145px;top:-125px;box-shadow:0 0 0 46px #ffffff08,0 0 0 92px #ffffff06;pointer-events:none;}
@@ -305,7 +346,91 @@ with right:
     </div>
     """, unsafe_allow_html=True)
 
-st.markdown('<div class="section-head"><div class="name">03 / Where the financial value comes from</div><div class="hint">An auditable four-number bridge · updates live</div></div>', unsafe_allow_html=True)
+# Before/after transformation is grounded in the SAME model as the CFO headline.
+# It is an estimate of avoided cost, NOT a revenue uplift, headcount reduction, or BLP claim.
+baseline_hours = r["baseline_manual_hours"]
+after_hours = r["remaining_manual_hours"]
+before_minutes = baseline_hours * 60 / inputs.invoices_per_year if inputs.invoices_per_year else 0
+after_minutes = after_hours * 60 / inputs.invoices_per_year if inputs.invoices_per_year else 0
+residual_fte = after_hours / inputs.annual_hours_per_fte
+base_labour_value = baseline_hours * inputs.employer_hourly_cost_eur
+
+st.markdown('<div class="section-head"><div class="name">03 / Before → After: what actually changes?</div><div class="hint">Same invoice volume · live scenario · projected, not observed</div></div>', unsafe_allow_html=True)
+st.markdown(f"""
+<div class="compare-flow">
+  <div class="compare-panel before">
+    <div class="compare-tag">TODAY · MANUAL BASELINE</div>
+    <div class="compare-big">{numeric(baseline_hours)} <small>hours / year</small></div>
+    <div class="compare-primary">Estimated manual invoice workload</div>
+    <div class="compare-row"><span>Manual time per invoice</span><b>{before_minutes:.1f} min</b></div>
+    <div class="compare-row"><span>AP workload equivalent</span><b>{r['baseline_manual_fte']:.1f} FTE</b></div>
+    <div class="compare-row"><span>Team focus</span><b style="font-size:11px">Routine handling</b></div>
+  </div>
+  <div class="compare-arrow">
+    <div class="arrow-circle">→</div>
+    <div class="arrow-pct">−{st.session_state.touch_pct}%</div>
+    <div class="arrow-copy">less manual touch time<br>model assumption</div>
+  </div>
+  <div class="compare-panel after">
+    <div class="compare-tag">WITH BLP · MODELED OUTCOME</div>
+    <div class="compare-big">{numeric(after_hours)} <small>hours / year</small></div>
+    <div class="compare-primary">Remaining manual work, including exceptions</div>
+    <div class="compare-row"><span>Manual time per invoice</span><b>{after_minutes:.1f} min</b></div>
+    <div class="compare-row"><span>AP workload equivalent</span><b>{residual_fte:.1f} FTE</b></div>
+    <div class="compare-row"><span>Team focus</span><b style="font-size:11px">Review & exceptions</b></div>
+  </div>
+</div>
+<div class="impact-strip">
+   <strong>↗ {numeric(r['hours_released'])} hours · {r['fte_released']:.2f} FTE of capacity potentially released</strong>
+   <span>Capacity equivalent, NOT projected redundancies or guaranteed payroll savings.</span>
+</div>
+""", unsafe_allow_html=True)
+
+# A CFO can flip between implementation-year and steady-state economics.
+# Revenue is deliberately flat: AP automation does not establish incremental sales.
+mode_left, mode_right = st.columns([1.4, 1], gap="medium", vertical_alignment="center")
+with mode_left:
+    st.markdown('<div class="section-head" style="margin:13px 0 3px"><div class="name">Financial before → after</div><div class="hint">Estimated economics; not actual booked P&L</div></div>', unsafe_allow_html=True)
+with mode_right:
+    st.toggle("Show Year 2+ recurring economics", value=False, key="steady_mode")
+
+in_steady = st.session_state.steady_mode
+net_impact = r["annual_net_eur"] if in_steady else r["year_one_net_eur"]
+after_financial_cost = base_labour_value - net_impact
+view_label = "Year 2+ recurring" if in_steady else "Year 1 including setup"
+max_financial_cost = max(base_labour_value, after_financial_cost, 1)
+before_bar_width = min(100, base_labour_value / max_financial_cost * 100)
+after_bar_width = min(100, after_financial_cost / max_financial_cost * 100)
+impact_flag = "negative" if net_impact < 0 else ""
+impact_verb = "Higher modeled cost" if net_impact < 0 else "Potential net cost benefit"
+st.markdown(f"""
+<div class="finance-compare">
+  <div class="fin-compare-grid">
+    <div>
+      <div class="fin-compare-kicker">BEFORE · CURRENT ANNUAL EFFORT</div>
+      <div class="fin-compare-val">{escape(euros(base_labour_value))}</div>
+      <div class="fin-compare-sub">Modeled manual processing effort × {escape(euros(inputs.employer_hourly_cost_eur, False))}/hour</div>
+    </div>
+    <div class="fin-mid">→</div>
+    <div class="fin-compare-after">
+      <div class="fin-compare-kicker">AFTER · {escape(view_label.upper())}</div>
+      <div class="fin-compare-val">{escape(euros(after_financial_cost))}</div>
+      <div class="fin-compare-sub">Cost equivalent after cashable savings + software {"" if in_steady else "+ setup"}</div>
+    </div>
+  </div>
+  <div class="fin-bars">
+    <div><div class="fin-bar-label">Before</div><div class="fin-bar-track"><div class="fin-bar-before" style="width:{before_bar_width:.2f}%"></div></div></div>
+    <div><div class="fin-bar-label">After · {escape(view_label)}</div><div class="fin-bar-track"><div class="fin-bar-after" style="width:{after_bar_width:.2f}%"></div></div></div>
+  </div>
+  <div class="fin-revenue">
+    <span><b>Revenue: €320m → €320m</b> · unchanged. Automation improves costs/capacity; no additional sales assumed.</span>
+    <div class="fin-gain {impact_flag}">{escape(impact_verb)}: {escape(euros(net_impact))}</div>
+  </div>
+</div>
+<div class="small-info" style="margin:7px 0 2px">“After” is a <b>cash-realization-adjusted cost equivalent</b>, not a forecast of actual AP payroll: {st.session_state.cash_pct}% of freed-hours value is assumed monetizable. Revenue, invoice volume, and the existing ERP remain unchanged.</div>
+""", unsafe_allow_html=True)
+
+st.markdown('<div class="section-head"><div class="name">04 / Show me the economics</div><div class="hint">An auditable four-number bridge · updates live</div></div>', unsafe_allow_html=True)
 
 st.markdown(f"""
 <div class="fin-bridge">
@@ -345,7 +470,7 @@ else:
                       "This is why a CFO should challenge cash conversion, not just automation speed.")
 st.markdown(f'<div class="breakeven-line">↗ <strong>CFO sensitivity check:</strong> {benchmark_text}</div>', unsafe_allow_html=True)
 
-st.markdown('<div class="section-head"><div class="name">04 / Real-world BLP impact</div><div class="hint">Public customer outcomes · not used in Isarwerk ROI assumptions</div></div>', unsafe_allow_html=True)
+st.markdown('<div class="section-head"><div class="name">05 / BLP customer impact · proven elsewhere</div><div class="hint">Public customer outcomes · not used in Isarwerk ROI assumptions</div></div>', unsafe_allow_html=True)
 p1, p2 = st.columns(2, gap="medium")
 with p1:
     st.markdown("""
@@ -366,43 +491,19 @@ with p2:
       </div>
     </div>""", unsafe_allow_html=True)
 
-st.markdown('<div class="section-head"><div class="name">05 / What changes operationally</div><div class="hint">Fixed mix, scaled with annual volume</div></div>', unsafe_allow_html=True)
-wleft, wright = st.columns(2, gap="medium")
-remaining_pct = (r["remaining_manual_hours"] / r["baseline_manual_hours"] * 100) if r["baseline_manual_hours"] > 0 else 0
-saved_pct = 100 - remaining_pct
-with wleft:
-    st.markdown(f"""
-    <div class="workload-card">
-      <div class="eyebrow">FROM MANUAL WORK TO CAPACITY</div>
-      <div class="workrow"><span>Before automation</span><strong>{numeric(r['baseline_manual_hours'])} hrs/year · {r['baseline_manual_fte']:.1f} FTE</strong></div>
-      <div class="track"><span class="before" style="width:100%"></span></div>
-      <div class="workrow"><span>After proposed reduction</span><strong>{numeric(r['remaining_manual_hours'])} hrs/year</strong></div>
-      <div class="track"><span class="after" style="width:{remaining_pct:.2f}%"></span><span class="saved" style="width:{saved_pct:.2f}%"></span></div>
-      <div class="work-foot"><strong>{numeric(r['hours_released'])} hrs/year released</strong> · redeployable capacity; only the cashable share contributes to ROI.</div>
-    </div>
-    """, unsafe_allow_html=True)
-with wright:
-    mix_colors = ["#15465d", "#318794", "#15a78e", "#a6dacb"]
-    segments, legends = [], []
-    for item, color in zip(r["category_mix"], mix_colors):
-        percent = (item["invoices"] / inputs.invoices_per_year * 100) if inputs.invoices_per_year else 0
-        segments.append(f'<span style="width:{percent:.3f}%;background:{color}"></span>')
-        short = item["name"].split(" · ")[0]
-        legends.append(f'<div class="mix-item"><span class="dot" style="background:{color}"></span><b>{escape(short)}</b> · {numeric(item["invoices"])} · {item["minutes"]:g} min</div>')
-    st.markdown(f"""
-    <div class="workload-card">
-      <div class="eyebrow">WHAT THE WORKLOAD INCLUDES</div>
-      <div style="font-family:Manrope,sans-serif;font-size:18px;font-weight:850;color:#1c3c4b;margin:9px 0 -5px">{numeric(inputs.invoices_per_year)} invoices / year</div>
-      <div class="mix-track">{''.join(segments)}</div>
-      <div class="mix-legend">{''.join(legends)}</div>
-      <div class="work-foot">Invoice counts and touch times are estimated, not measured.</div>
-    </div>
-    """, unsafe_allow_html=True)
+with st.expander("Explore Isarwerk invoice mix (estimated)", expanded=False):
+    st.caption("Scaled from the original 60,600-invoice case; mix percentages remain unchanged when volume changes.")
+    mix_rows = [
+        {"Category": item["name"], "Invoices/year": numeric(item["invoices"]),
+         "Minutes/invoice": f'{item["minutes"]:g}', "Total manual hours": numeric(item["annual_hours"])}
+        for item in r["category_mix"]
+    ]
+    st.dataframe(mix_rows, hide_index=True, use_container_width=True)
 
 
 st.markdown("""
 <div class="decision"><strong>THE NEXT CFO DECISION</strong><span>Validate invoice volume and time with AP · cashable savings with Finance · scope, pricing and pilot results with BLP</span></div>
-<div class="footnote">Illustrative manufacturing example; Isarwerk is fictional. Software cost (€0.38/invoice), setup (€50k), time reduction and monetization rates are assumptions, <b>not BLP quotations or proven Isarwerk outcomes</b>. Payback is simple setup payback at immediate steady-state savings (no rollout ramp or discounted cash flow). Released FTE is workload capacity, not a staffing recommendation.</div>
+<div class="footnote">Illustrative manufacturing example; Isarwerk is fictional. Software cost (€0.38/invoice), setup (€50k), time reduction and monetization rates are assumptions, <b>not BLP quotations or proven Isarwerk outcomes</b>. Payback is simple setup payback at immediate steady-state savings (no rollout ramp or discounted cash flow). Released FTE is workload capacity, not a staffing recommendation. Revenue is held constant at €320m; potential P&L impact is conditional on finance-validated cash realization.</div>
 """, unsafe_allow_html=True)
 
 with st.expander("Assumption confidence, sources & calculations · for CFO follow-up", expanded=False):
