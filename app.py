@@ -271,7 +271,18 @@ a{color:#088d7b;}
 .revenue-panel .label{font-size:10px;letter-spacing:1px;font-weight:850;color:#8194a0;text-transform:uppercase;}
 .revenue-panel .big{font-family:Manrope,sans-serif;font-size:22px;font-weight:850;letter-spacing:-.8px;color:#1b384d;margin:6px 0 4px;}
 .revenue-panel .desc{font-size:11px;line-height:1.55;color:#687e8a;}
-.case-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;}
+.workflow-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin-top:2px;}
+.workflow-step{background:#fff;border:1px solid #dfe8ed;border-radius:13px;padding:13px 14px 12px;min-height:106px;display:flex;flex-direction:column;gap:5px;position:relative;}
+.workflow-step:not(:last-child)::after{content:'→';position:absolute;right:-13px;top:42%;z-index:2;background:#e8f7f2;color:#168a76;border-radius:50%;height:19px;width:19px;text-align:center;line-height:19px;font-size:12px;font-weight:900;}
+.workflow-step .step-num{font-size:10px;font-weight:850;letter-spacing:1px;color:#108b78;}
+.workflow-step b{font-family:Manrope,sans-serif;font-size:12px;color:#1a3d50;}
+.workflow-step>span:last-child{font-size:10px;color:#708592;line-height:1.45;}
+.case-intro{font-size:10px;color:#188a78;font-weight:850;letter-spacing:1.1px;margin:19px 0 10px;}
+.case-intro span{color:#8795a1;letter-spacing:0;font-size:10px;font-weight:550;margin-left:9px;text-transform:none;}
+.proof-desc strong{color:#284958;font-weight:800;}
+@media(max-width:800px){.workflow-strip{grid-template-columns:repeat(2,minmax(0,1fr));}.workflow-step:nth-child(2)::after{display:none;}}
+@media(max-width:550px){.workflow-step{padding:11px;min-height:116px}.workflow-step b{font-size:11px}.case-intro span{display:block;margin-left:0;margin-top:4px;}}
+
 .details-kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:10px;}
 .details-kpis .tile{background:#fff;border:1px solid #dfe8ed;border-radius:13px;padding:12px 13px;}
 .details-kpis .lbl{font-size:10px;color:#718594;font-weight:750;line-height:1.4;}
@@ -390,11 +401,6 @@ with right:
       <div class="kpi"><div class="kpi-label">Net savings per year · thereafter</div><div class="kpi-number">{euros(r['annual_net'])}</div><div class="kpi-note">After ongoing software costs</div></div>
     </div>
     <div class="revenue-panel">
-      <div class="label">REVENUE PERSPECTIVE</div>
-      <div class="big">{euros(REVENUE)} → {euros(REVENUE)}</div>
-      <div class="desc">Revenue stays unchanged in this estimate. The value comes from lower costs and more available working time—not assumed new sales.</div>
-    </div>
-    <div class="revenue-panel">
       <div class="label">WHERE THE SAVINGS COME FROM</div>
       <div class="big">{euros(r['cash_eur'])} <span style="font-size:12px;color:#81939b;font-weight:700">annual cash savings</span></div>
       <div class="desc">Less {euros(r['annual_cost'])} per year for the platform and processing; one-time setup is {euros(st.session_state.setup_cost)}.</div>
@@ -433,28 +439,32 @@ st.markdown(f"""
 </div>
 """, unsafe_allow_html=True)
 
-st.markdown('<div class="section-head"><div class="name">04 / Where automation could help</div>'
-            '<div class="hint">Only supplier documents are counted in these savings</div></div>',
+# A single, familiar document workflow replaces the four-department list.
+# Customer results are shown as proof points, not treated as Isarwerk forecasts.
+st.markdown('<div class="section-head"><div class="name">04 / Invoice workflow &amp; use cases</div>'
+            '<div class="hint">Example process · selected customer results</div></div>',
             unsafe_allow_html=True)
 st.markdown("""
-<div class="case-grid">
-  <div class="workload-card"><div class="eyebrow">IN THIS ESTIMATE</div><div class="proof-title">Finance</div><div class="proof-desc">Supplier invoices, purchase-order checks, approvals and exceptions.</div></div>
-  <div class="workload-card"><div class="eyebrow" style="color:#81939c">POSSIBLE NEXT STEP</div><div class="proof-title">Procurement</div><div class="proof-desc">Order confirmations, prices and quantity checks.</div></div>
-  <div class="workload-card"><div class="eyebrow" style="color:#81939c">POSSIBLE NEXT STEP</div><div class="proof-title">Logistics</div><div class="proof-desc">Delivery notes, goods receipt and ERP updates.</div></div>
-  <div class="workload-card"><div class="eyebrow" style="color:#81939c">POSSIBLE NEXT STEP</div><div class="proof-title">Sales</div><div class="proof-desc">Customer orders, data entry and order exceptions.</div></div>
+<div class="workflow-strip" aria-label="Illustrative supplier invoice workflow">
+  <div class="workflow-step"><span class="step-num">01</span><b>Receive</b><span>Supplier invoice enters the workflow</span></div>
+  <div class="workflow-step"><span class="step-num">02</span><b>Check &amp; match</b><span>Extract details; match PO and goods receipt</span></div>
+  <div class="workflow-step"><span class="step-num">03</span><b>Review exceptions</b><span>Flag discrepancies for human approval</span></div>
+  <div class="workflow-step"><span class="step-num">04</span><b>Post to ERP</b><span>Validated record continues in SAP</span></div>
 </div>
+<div class="work-foot">Illustrative process flow; actual steps depend on the ERP integration and invoice type.</div>
+<div class="case-intro">BLP CUSTOMER RESULTS <span>Examples from published projects · not inputs to Isarwerk's ROI</span></div>
 """, unsafe_allow_html=True)
 proof_a, proof_b = st.columns(2, gap="medium")
 with proof_a:
-    st.markdown(f"""<div class="proof-card"><div><div class="proof-number">1.5 FTE</div><div class="proof-unit">Evatec · after deployment</div></div>
-    <div><div class="proof-title">Document handling with a smaller AP workload</div>
-    <div class="proof-desc">BLP's customer story describes 57k annual documents of several types, not just invoices.</div>
-    <a class="proof-source" href="{LINKS['evatec']}" target="_blank">Read customer story ↗</a></div></div>""", unsafe_allow_html=True)
+    st.markdown(f"""<div class="proof-card"><div><div class="proof-number">1.5 FTE</div><div class="proof-unit"><strong>Evatec</strong> · processing team</div></div>
+    <div><div class="proof-title">Smaller team handling complex documents</div>
+    <div class="proof-desc"><strong>57,000 annual documents</strong> across multiple document types. The case describes an AP operation with <strong>1.5 FTE</strong>; this is not an Isarwerk staffing target.</div>
+    <a class="proof-source" href="{LINKS['evatec']}" target="_blank">Evatec customer story ↗</a></div></div>""", unsafe_allow_html=True)
 with proof_b:
-    st.markdown(f"""<div class="proof-card"><div><div class="proof-number">30–40%</div><div class="proof-unit">Migros · reduced resource needs</div></div>
-    <div><div class="proof-title">Simpler workflows and lower workload</div>
-    <div class="proof-desc">A reported customer result, not the manual-work reduction assumed for Isarwerk.</div>
-    <a class="proof-source" href="{LINKS['migros']}" target="_blank">Read customer story ↗</a></div></div>""", unsafe_allow_html=True)
+    st.markdown(f"""<div class="proof-card"><div><div class="proof-number">30–40%</div><div class="proof-unit"><strong>Migros</strong> · resource needs</div></div>
+    <div><div class="proof-title">Less effort, more consistent processing</div>
+    <div class="proof-desc"><strong>30–40% lower resource requirements</strong> reported after process standardization. This is customer evidence, not a promised reduction for Isarwerk.</div>
+    <a class="proof-source" href="{LINKS['migros']}" target="_blank">Migros customer story ↗</a></div></div>""", unsafe_allow_html=True)
 
 # Keep detailed math available, not in the presentation path.
 with st.expander("Cost breakdown and sources", expanded=False):
